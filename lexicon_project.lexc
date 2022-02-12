@@ -1,0 +1,178 @@
+Multichar_Symbols
+	+St2ps	 ! Standard 2nd person singular
+	+Cv2ps	 ! Chilean voseo form for 2 person singular
+	+Inf	 ! Infinitive
+	+Pre	 ! Present tense
+	+Pret	 ! Preterite
+	+Imp	 ! Imperfect
+	+Cond	 ! Conditional
+	+Fut	 ! Future
+	+SubjPre ! Subjunctive present
+	+SubjImp ! Subjunctive imprerfect
+	+SubjFut ! Subjunctive future
+	+PerPre	 ! Present Perfect
+	+PerPret ! Preterite Perfect
+	+PerPast ! Past Perfect
+	+PerCond ! Conditional Perfect
+	+PerFut  ! Future Perfect
+	+PerSubjPre	! Subjunctive Present Perfect
+	+PerSubjPast	! Subjunctive Past Perfect
+	+PerSubjFut	! Subjunctive Future Perfect
+	+ConPre		! Continuous Present
+	+ConPret	! Continuous Preterite
+	+ConImp		! Continuous Imprefect
+	+ConCond	! Continuous Conditional
+	+Impera		! Imperative
+	+ImperaNeg	! Negative Imperative
+
+LEXICON Root
+0:	VerbStems ;
+
+LEXICON VerbStems
+hablar:_habl	ArVerb ;	! hablar = to speak
+amar:_am		ArVerb ;	! amar	= to love
+llamar:_llam	ArVerb ;	! llamar = to call / to be called
+fumar:_fum	ArVerb ;	! fumar = to smoke
+acabar:_acab	ArVerb ;	! acabar = to finish
+bailar:_bail	ArVerb ;	! bailar = to dance
+contar:_cOnt	ArVerb ;	! contar = to tell/to count
+comer:_com	ErVerb ;	! comer = to eat
+querer:_quEr	ErVerb ;	! querer = to want / to love
+entender:_entEnd	ErVerb ;	! entender = to understand
+perder:_pErd	ErVerb ;	! perder = to lose, to get lost
+correr:_corr	ErVerb ;	! correr = to run
+vivir:_viv	IrVerb ;	! vivir = to live
+abrir:_abr	IrVerb ;	! abrir = to open
+morir:_mOr	IrVerb ;	! morir = to die
+dormir:_dOrm~	IrVerb ;	! dormir = to sleep
+ser:_		SerVerb ;	! ser = to be
+
+LEXICON ArVerb
++Inf:ar	# ;
++Pre:^	A_endings ;
++Pret+St2ps:aste	# ;
++Pret+Cv2ps:aste        # ;
++Imp:ab	A_endings ;
++Cond:arí	A_endings ;
++Fut:ar	Fut_A_endings ;
++SubjPre:^	Ei_endings ;
++SubjImp:ar	A_endings ;
++SubjFut+St2ps:ares	# ;
++SubjFut+Cv2ps:ares     # ;
++PerPre:ado1	Auxiliar_verbs ;
++PerPret:ado2	Auxiliar_verbs ;
++PerPast:ado3    Auxiliar_verbs ;
++PerCond:ado4   Auxiliar_verbs ;
++PerFut:ado5    Auxiliar_verbs ;
++PerSubjPre:ado6   Auxiliar_verbs ;
++PerSubjPast:ado7    Auxiliar_verbs ;
++PerSubjFut:ado8   Auxiliar_verbs ;
++ConPre:ando9      Auxiliar_verbs ;
++ConPret:ando13	Auxiliar_verbs ;
++ConImp:ando11	Auxiliar_verbs ; 
++ConCond:ando12	Auxiliar_verbs ;
++Impera+St2ps:^^a	# ;
++Impera+Cv2ps:^^a	# ;
++ImperaNeg:N^	Ei_endings ;
+
+LEXICON A_endings
++St2ps:^as	# ;
++Cv2ps:~ái	# ;
+
+LEXICON Fut_A_endings
++St2ps:ás      # ;
++Cv2ps:ái      # ;
+
+LEXICON Auxiliar_verbs
++St2ps:ST      # ;
++Cv2ps:CV      # ;
+
+LEXICON ErVerb
++Inf:er	# ;
++Pre:^	Ei_endings ;
++Pret+St2ps:iste	# ;
++Pret+Cv2ps:iste        # ;
++Imp:í	A_endings ;	
++Cond:erí	A_endings ;	
++Fut:er	Fut_A_endings ;	
++SubjPre:^    A_endings ;
++SubjImp:ier  A_endings ;
++SubjFut+St2ps:ieres # ;
++SubjFut+Cv2ps:ieres # ;
++PerPre:ido1    Auxiliar_verbs ;
++PerPret:ido2   Auxiliar_verbs ;
++PerPast:ido3    Auxiliar_verbs ;
++PerCond:ido4   Auxiliar_verbs ;
++PerFut:ido5    Auxiliar_verbs ;
++PerSubjPre:ido6   Auxiliar_verbs ;
++PerSubjPast:ido7    Auxiliar_verbs ;
++PerSubjFut:ido8   Auxiliar_verbs ;
++ConPre:iendo9      Auxiliar_verbs ;
++ConPret:iendo13 Auxiliar_verbs ;
++ConImp:iendo11  Auxiliar_verbs ;
++ConCond:iendo12 Auxiliar_verbs ;
++Impera+St2ps:^^e       # ;
++Impera+Cv2ps:^^e       # ;
++ImperaNeg:N^   A_endings ;
+
+LEXICON Ei_endings
++St2ps:^es       # ;                                    
++Cv2ps:í       # ; 
+
+LEXICON IrVerb
++Inf:ir	# ;
++Pre:^	Ei_endings ;
++Pret+St2ps:iste	# ;
++Pret+Cv2ps:iste        # ;
++Imp:í        A_endings ;  
++Cond:irí     A_endings ;   
++Fut:ir      Fut_A_endings ;	
++SubjPre:^~	A_endings ;		
++SubjImp:ier~~	A_endings ;
++SubjFut+St2ps:ieres~~	# ;
++SubjFut+Cv2ps:ieres~~    # ;
++PerPre:ido1    Auxiliar_verbs ;
++PerPret:ido2   Auxiliar_verbs ;
++PerPast:ido3    Auxiliar_verbs ;
++PerCond:ido4   Auxiliar_verbs ;
++PerFut:ido5    Auxiliar_verbs ;
++PerSubjPre:ido6   Auxiliar_verbs ;
++PerSubjPast:ido7    Auxiliar_verbs ;
++PerSubjFut:ido8   Auxiliar_verbs ;	
++ConPre:~~iendo9      Auxiliar_verbs ;
++ConPret:~~iendo13	Auxiliar_verbs ;
++ConImp:~~iendo11  Auxiliar_verbs ;
++ConCond:~~iendo12 Auxiliar_verbs ;
++Impera+St2ps:^^e       # ;
++Impera+Cv2ps:^^e       # ;
++ImperaNeg:N^~   A_endings ;
+
+LEXICON SerVerb
++Inf:ser # ;
++Pre:er  Ei_endings ;
++Pret+St2ps:fuiste        # ;
++Pret+Cv2ps:fuiste        # ;
++Imp:er        A_endings ;
++Cond:serí     A_endings ;
++Fut:ser      Fut_A_endings ;
++SubjPre:se      A_endings ;
++SubjImp:fuer   A_endings ;
++SubjFut+St2ps:fueres    # ;
++SubjFut+Cv2ps:fueres    # ;
++PerPre:sido1    Auxiliar_verbs ;
++PerPret:sido2   Auxiliar_verbs ;
++PerPast:sido3    Auxiliar_verbs ;
++PerCond:sido4   Auxiliar_verbs ;
++PerFut:sido5    Auxiliar_verbs ;
++PerSubjPre:sido6   Auxiliar_verbs ;
++PerSubjPast:sido7    Auxiliar_verbs ;
++PerSubjFut:sido8   Auxiliar_verbs ;
++ConPre:siendo9      Auxiliar_verbs ;
++ConPret:siendo13 Auxiliar_verbs ;
++ConImp:siendo11  Auxiliar_verbs ;
++ConCond:siendo12 Auxiliar_verbs ;
++Impera+St2ps:sé       # ;
++Impera+Cv2ps:sé       # ;
++ImperaNeg:Nse   A_endings ;
+
+END

@@ -1,0 +1,76 @@
+clear stack
+read lexc lexicon_project_without_fd.lexc
+define Lexicon ;
+regex Lexicon ;
+
+define Char	a | á | b | c | d | e | é | f | g | h | i | í | j | k | l | m | n | ñ | o | ó | p | q | r | s | t | u | ú | v | w | x | y | z ;
+define CharSpecial     a | á | b | c | d | e | é | f | g | h | i | í | j | k | l | m | n | ñ | o | ó | p | q | r | s | t | u | ú | v | w | x | y | z | A | E | I | O | U | %^ | %~ ;
+
+define VowelChange1 E -> i, O -> u || _ Char* %~ Char* %^* Char* %~ %~ ;
+
+define CleanUp1 %~ -> 0 ;
+
+define VowelChange E -> i e, O -> u e, I -> i e, U -> u e || _ Char* %^ Char* %^ ;
+
+define NoVowelChange E -> e, O -> o, I -> i, U -> u ;
+
+define CleanUp %^ -> 0 ;
+
+define RemoveExtraAccents á -> a || [ á | é | í | ó | ú ] Char* _ i .#. ;
+
+define Negation %_ -> n o %_ || _ CharSpecial* N ;
+
+define Perfect11 %_ -> h a s %_ || _ Char* 1 S T .#. ;
+define Perfect12 %_ -> h a i %_ || _ Char* 1 C V .#. ;
+define Perfect2 %_ -> h u b i s t e %_ || _ Char* 2 [S T | C V ] .#. ;
+define Perfect31 %_ -> h a b í a s %_ || _ Char* 3 S T .#. ;
+define Perfect32 %_ -> h a b í a i %_ || _ Char* 3 C V .#. ;
+
+define Perfect41 %_ -> h a b r í a s %_ || _ Char* 4 S T .#. ;
+define Perfect42 %_ -> h a b r í a i %_ || _ Char* 4 C V .#. ;
+define Perfect51 %_ -> h a b r á s %_ || _ Char* 5 S T .#. ;
+define Perfect52 %_ -> h a b r á i %_ || _ Char* 5 C V .#. ;
+
+define Perfect61 %_ -> h a y a s %_ || _ Char* 6 S T .#. ;
+define Perfect62 %_ -> h a y á i %_ || _ Char* 6 C V .#. ;
+define Perfect71 %_ -> h u b i e r a s %_ || _ Char* 7 S T .#. ;
+define Perfect72 %_ -> h u b i e r á i %_ || _ Char* 7 C V .#. ;
+define Perfect8 %_ -> h u b i e r e s %_ || _ Char* 8 [S T | C V ] .#. ;
+
+define Con91 %_ -> e s t á s %_ || _ Char* 9 S T .#. ;
+define Con92 %_ -> e s t á i %_ || _ Char* 9 C V .#. ;
+define Con101 %_ -> e s t u v i s t e %_ || _ Char* 1 3 [S T | C V ].#. ;
+define Con111 %_ -> e s t a b a s %_ || _ Char* 1 1 S T .#. ;
+define Con112 %_ -> e s t a b á i %_ || _ Char* 1 1 C V .#. ;
+define Con121 %_ -> e s t a r í a s %_ || _ Char* 1 2 S T .#. ;
+define Con122 %_ -> e s t a r í a i %_ || _ Char* 1 2 C V .#. ;
+
+define CleanUp3 [ 1 3 | 1 1 | 1 2 ] [ S T | C V ] -> 0 ;
+
+define CleanUp4 [ 3 | 4 | 5 | 6 | 7 | 8 | 9 | 1 | 2 ] [ S T | C V ] -> 0 ; 
+
+define CleanUp5 %_ -> 0 || .#. _ ;
+
+define CleanUp6 N -> 0 ;
+
+define Querer1 q u e r i s t e -> q u i s i s t e ;
+
+define Querer2 q u e r e r í a s -> q u e r r í a s ;
+
+define Querer3 q u e r e r í a i -> q u e r r í a i ;
+
+define Querer4 q u e r e r á s -> q u e r r á s ;
+
+define Querer5 q u e r e r á i -> q u e r r á i ;
+
+define Querer6 q u e r i e r a s -> q u i s i e r a s ;
+
+define Querer7 q u e r i e r á i -> q u i s i e r á i ;
+
+define Querer8 q u e r i e r e s -> q u i s i e r e s ; 
+
+! Compose the rules together:
+define LexiconWithRules Lexicon .o. Negation .o. CleanUp6 .o. VowelChange1 .o. CleanUp1 .o. VowelChange .o. NoVowelChange .o. CleanUp .o. RemoveExtraAccents .o. Perfect11 .o. Perfect12 .o. Perfect2 .o. Perfect31 .o. Perfect32 .o. Perfect41 .o. Perfect42 .o. Perfect51 .o. Perfect52 .o. Perfect61 .o. Perfect62 .o. Perfect71 .o. Perfect72 .o. Perfect8 .o. Con91 .o. Con92 .o. Con101 .o. Con111 .o. Con112 .o. Con121 .o. Con122 .o. CleanUp3 .o. CleanUp4 .o. CleanUp5 .o. Querer1 .o. Querer2 .o. Querer3 .o. Querer4 .o. Querer5 .o. Querer6 .o. Querer7 .o. Querer8 ;
+regex LexiconWithRules ;
+
+random-lower
